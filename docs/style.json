@@ -1,0 +1,35 @@
+{
+  "version": 8,
+  "sources": {
+    "aerial": {
+      "type": "raster",
+      "tiles": [
+        "https://server.nsdi.gov.bd/iserver/services/map-zxytiles-DHAKAAERIALIMAGERY/wmts100/DHAKA_AERIAL_IMAGERY/default/GoogleMapsCompatible_DHAKA_AERIAL_IMAGERY/{z}/{y}/{x}.png"
+      ],
+      "tileSize": 256,
+      "maxzoom": 18,
+      "attribution": "NSDI Bangladesh"
+    }
+  },
+  "center": [
+    90.413,
+    23.757
+  ],
+  "zoom": 13,
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#444"
+      }
+    },
+    {
+      "id": "aerial",
+      "type": "raster",
+      "source": "aerial",
+      "minzoom": 0,
+      "maxzoom": 22
+    }
+  ]
+}

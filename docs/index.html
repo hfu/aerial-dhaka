@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body { margin: 0; padding: 0; font-family: 'Geist Mono', monospace; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#top { position: absolute; overflow: auto; bottom: 10px; width: 100%; font-size: large;
+  text-align: center; color: #ccc; background-color: rgba(0, 0, 0, 40%);}
+#grid { color: #888; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@^5.1.0/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
+<link href="https://unpkg.com/maplibre-gl@^5.1.0/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body>
+<div id="map"></div>
+<div id="top">Dhaka</div>
+<script> 
+maplibregl.addProtocol('pmtiles', (new pmtiles.Protocol()).tile)
+
+;(async () => {
+  const style = await fetch('style.json').then(resp => resp.json())
+  const map = new maplibregl.Map({
+    container: 'map', style: style, hash: true
+  })
+  map.addControl(new maplibregl.NavigationControl())
+  map.addControl(new maplibregl.GlobeControl())
+})()
+</script>
+</body>
+</html>
+  
